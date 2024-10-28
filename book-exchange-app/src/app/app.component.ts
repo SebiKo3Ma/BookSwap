@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
+  template: `
+    <h1>{{ title }}</h1> <!-- Folosește proprietatea title -->
+    <router-outlet></router-outlet>
+  `,
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [RouterOutlet],
 })
 export class AppComponent {
-  title = 'book-exchange-app';
+  title = 'BookSwap'; // Adaugă proprietatea title
 }

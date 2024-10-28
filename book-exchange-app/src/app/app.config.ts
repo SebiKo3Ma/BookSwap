@@ -1,8 +1,6 @@
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-
-import { routes } from './app.routes';
-
-export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes)]
+// app.config.ts
+export const AppConfig = {
+  apiUrl: 'https://api.example.com', // URL-ul API-ului
+  appName: 'BookSwap', // Numele aplicației
+  // alte configurări globale
 };
