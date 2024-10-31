@@ -8,7 +8,7 @@ On our book swap app, the user would be able to swap a book already read with a 
 
 It will benefit the avid readers who don’t want to keep the books they already read, don’t want to give the money for new books and also don’t want to be rushed in reading a book like in a library.
 
-For technologies we will use Visual Studio Code with Angular for front-end, with Python and MongoDB for back-end.
+For technologies we will use Visual Studio Code with Angular for front-end, with Django and AWS for back-end, PostgreSQL for database.
 
 As a plan, we would first have a meeting in which each of us would say what we want from each others part, have meeting once a week to see what we did, if it’s ok to add to the project. By week 6 we would like to have the basic things functional, by week 8 for all our functions to work as talked and afterwards to debate on what needs to be change in the aspect of the project, or the overall design.
 
