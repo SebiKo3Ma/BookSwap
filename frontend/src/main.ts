@@ -1,14 +1,15 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component'; // Asigură-te că calea este corectă
+import { AppComponent } from './app/app.component'; 
 import { provideRouter } from '@angular/router';
 import { HomepageComponent } from './app/components/homepage/homepage.component';
+import { AboutUsComponent } from './app/components/about-us/about-us.component';
 
-// Definirea rutei direct în main.ts
+
 const routes = [
-  { path: '', component: HomepageComponent }, // Asigură-te că ai importat HomepageComponent
-  // alte rute pot fi adăugate aici
+  { path: '', component: HomepageComponent }, 
+  { path: 'about-us', component: AboutUsComponent },
 ];
 
 bootstrapApplication(AppComponent, {
-  providers: [provideRouter(routes)] // Folosește rutele direct
+  providers: [provideRouter(routes)] 
 }).catch(err => console.error(err));

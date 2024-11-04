@@ -1,0 +1,21 @@
+.about-us {
+    text-align: center;
+    margin: 20px;
+    color: black;
+    opacity: 1;
+}
+
+h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #555;
+}
+
+p {
+    font-size: 1.2em;
+    color: #666;
+}

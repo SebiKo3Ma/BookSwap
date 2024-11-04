@@ -4,12 +4,12 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   template: `
-    <h1>{{ title }}</h1> <!-- Folosește proprietatea title -->
+    <h1>{{ title }}</h1> 
     <router-outlet></router-outlet>
   `,
   standalone: true,
   imports: [RouterOutlet],
 })
 export class AppComponent {
-  title = 'BookSwap'; // Adaugă proprietatea title
+  title = 'BookSwap'; 
 }
