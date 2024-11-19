@@ -1,17 +1,10 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { HomepageComponent } from './components/homepage/homepage.component'; 
+import { Routes } from '@angular/router';
+import { HomepageComponent } from './components/homepage/homepage.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
-import { HelpComponent } from './components/help/help.component';
+import { HelpComponent } from './components/help/help.component';  // Nu uita de HelpComponent
 
-const routes: Routes = [
-  { path: '', component: HomepageComponent }, 
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'help', component: HelpComponent } 
+export const routes: Routes = [
+  { path: '', component: HomepageComponent },  // Ruta principală
+  { path: 'about-us', component: AboutUsComponent },  // Ruta pentru About Us
+  { path: 'help', component: HelpComponent },  // Ruta pentru Help
 ];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)], 
-  exports: [RouterModule] 
-})
-export class AppRoutingModule {}
