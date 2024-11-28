@@ -5,17 +5,26 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component'; 
 import { FooterComponent } from './components/footer/footer.component'; 
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+
 @Component({
   selector: 'app-root',
   template: `
-    <app-header></app-header> 
-    <main>  
-      <router-outlet></router-outlet>
+    <mat-toolbar color="primary">
+      <span>BookSwap</span>
+    </mat-toolbar>
     <main>
-    <app-footer></app-footer> 
+      <router-outlet></router-outlet>
+    </main>
+    <mat-footer>
+      <p>&copy; 2024 BookSwap. All rights reserved.</p>
+    </mat-footer>
     `, 
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent],  // Asigură-te că le-ai adăugat aici
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, MatButtonModule, MatInputModule, MatToolbarModule, MatCardModule], 
 })
 export class AppComponent {
    
