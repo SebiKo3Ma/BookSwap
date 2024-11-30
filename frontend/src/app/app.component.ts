@@ -11,8 +11,8 @@ import { appRoutes } from './app.routes';
 @Component({
   selector: 'app-root',
   template: `
-    <mat-toolbar color="primary">
-      <span>BookSwap</span>
+    <mat-toolbar>
+    <span routerLink="/">BookSwap</span>
     </mat-toolbar>
     <main>
       <router-outlet></router-outlet>

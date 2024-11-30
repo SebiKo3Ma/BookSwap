@@ -1,14 +1,22 @@
 .app-footer {
-    background-color: #f1f1f1;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .footer-buttons {
-    margin-top: 10px;
-  }
-  
-  .footer-buttons button {
-    margin: 5px;
-  }
-  
+  background-color: #4a553d;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%; 
+  z-index: 1000; 
+}
+.footer-buttons button {
+  background-color: #9a4945;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.footer-buttons button:hover {
+  background-color: #bf6f60;
+}
