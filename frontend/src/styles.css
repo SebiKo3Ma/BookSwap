@@ -1,6 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import '@angular/material/prebuilt-themes/purple-green.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@import '@angular/material/prebuilt-themes/purple-green.css';
 
+.mat-footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .app-footer {
+    background-color: #f8f8f8;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .footer-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .footer-buttons button {
+    background-color: #00796b;
+    color: white;
+  }
+
+  .home-card {
+    margin: 20px auto;
+    max-width: 600px;
+  }
+  
+  

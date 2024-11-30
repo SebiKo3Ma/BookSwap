@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
-  imports: [],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css'
+  styleUrls: ['./footer.component.css'],
+  standalone: true,
+  imports: [MatCardModule, MatDividerModule], 
 })
-export class FooterComponent {
-
-}
+export class FooterComponent {}

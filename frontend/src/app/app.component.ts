@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-
-// Importă corect componentele
-import { HeaderComponent } from './components/header/header.component'; 
-import { FooterComponent } from './components/footer/footer.component'; 
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatInputModule } from '@angular/material/input';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
+import { RouterModule } from '@angular/router';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+import { MatButtonModule } from '@angular/material/button'; 
+import { MatCardModule } from '@angular/material/card'; 
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { appRoutes } from './app.routes';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +17,24 @@ import { MatCardModule } from '@angular/material/card';
     <main>
       <router-outlet></router-outlet>
     </main>
-    <mat-footer>
+    <footer class="app-footer">
       <p>&copy; 2024 BookSwap. All rights reserved.</p>
-    </mat-footer>
-    `, 
+      <div class="footer-buttons">
+        <button routerLink="/about-us">About Us</button>
+        <button routerLink="/help">Help</button>
+      </div>
+    </footer>
+  `,
+  styleUrls: ['./app.component.css'],
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, MatButtonModule, MatInputModule, MatToolbarModule, MatCardModule], 
+  imports: [
+    RouterModule,
+    RouterOutlet, 
+    MatToolbarModule, 
+    MatButtonModule, 
+    MatCardModule,
+    HeaderComponent,
+    FooterComponent
+  ],
 })
-export class AppComponent {
-   
-}
+export class AppComponent {}

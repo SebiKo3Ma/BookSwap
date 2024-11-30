@@ -1,0 +1,14 @@
+.app-footer {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-buttons {
+    margin-top: 10px;
+  }
+  
+  .footer-buttons button {
+    margin: 5px;
+  }
+  
