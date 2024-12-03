@@ -1,13 +1,19 @@
 from django.shortcuts import render
-from .models import TitleCard
+from .models import Listing
 import random
 
 def homepage_view(request):
-    title_cards = list(TitleCard.objects.all())
-    random.shuffle(title_cards) 
-    title_cards = title_cards[:10]
+    # Fetch all listings and prefetch related data to optimize queries
+    listings = list(
+        Listing.objects.select_related('user', 'book')
+        .only('description', 'book__title', 'user__username', 'image')  # Include only necessary fields
+    )
+    
+    # Shuffle the listings and select the first 10
+    random.shuffle(listings)
+    listings = listings[:10]
 
     context = {
-        'title_cards': title_cards
+        'listings': listings
     }
     return render(request, 'homepage.html', context)
