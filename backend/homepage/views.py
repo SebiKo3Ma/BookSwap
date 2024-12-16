@@ -16,4 +16,4 @@ def homepage_view(request):
     context = {
         'listings': listings
     }
-    return render(request, 'homepage.html', context)
+    return render(request, 'index.html', context)
