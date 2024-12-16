@@ -1,13 +1,19 @@
-<mat-toolbar>
-  <span routerLink="/">BookSwap</span> 
-</mat-toolbar>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<footer class="app-footer">
-  <p>&copy; 2024 BookSwap. All rights reserved.</p>
-  <div class="footer-buttons">
-    <button routerLink="/about-us">About Us</button>
-    <button routerLink="/help">Help</button>
-  </div>
-</footer>
+<div class="page-container">
+  <header class="app-header">
+    <mat-toolbar color="primary">
+      <span routerLink="/">BookSwap</span>
+    </mat-toolbar>
+  </header>
+
+  <main class="content-wrapper">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="app-footer">
+    <p>&copy; 2024 BookSwap. All rights reserved.</p>
+    <div class="footer-buttons">
+      <button routerLink="/about-us">About Us</button>
+      <button routerLink="/help">Help</button>
+    </div>
+  </footer>
+</div>

@@ -1,3 +1,14 @@
-<mat-toolbar>
-  <span>BookSwap</span>
-</mat-toolbar>
+<header>
+  <div class="logo">
+    <span>BookSwap</span> <!-- Textul rămâne acolo -->
+  </div>
+
+  <div *ngIf="!isAuthenticated">
+    <button (click)="login('admin', 'admin')">Login</button>
+  </div>
+
+  <div *ngIf="isAuthenticated">
+    <button (click)="logout()">Logout</button>
+  </div>
+</header>
+

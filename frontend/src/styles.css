@@ -1,98 +1,84 @@
 :root {
-    --color-primary: #7a4141;
-    --color-secondary: #9a4945;
-    --color-accent: #bf6f60;
-    --color-dark-green: #4a553d;
-    --color-light-green: #768752;
-  }
-  
-  html, body { height: 100%; display: flex; flex-direction: column; }
-  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #7a4141;}
-  main {
-    flex: 1;
-  }
-  .app-header {
-    background-color: var(--color-primary);
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-  }
-  
-  .app-header h1 {
-    font-size: 2rem;
-    margin: 0;
-  }
+  --color-primary: #7a4141;
+  --color-secondary: #9a4945;
+  --color-accent: #bf6f60;
+  --color-dark-green: #4a553d;
+  --color-light-green: #768752;
+}
 
-  .app-footer {
-    background-color: var(--color-dark-green);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    margin-top: auto;
-  }
-  
-  .footer-buttons button {
-    background-color: var(--color-accent);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .footer-buttons button:hover {
-    background-color: var(--color-secondary);
-  }
-  
-  button {
-    background-color: var(--color-accent);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1rem;
-  }
-  
-  button:hover {
-    background-color: var(--color-secondary);
-  }
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
 
-  .mat-card {
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-  }
-  
-  .mat-card-header {
-    background-color: var(--color-primary);
-    color: #fff;
-  }
-  
-  .mat-card-title {
-    font-size: 1.5rem;
-  }
-  
-  .mat-card-content {
-    padding: 20px;
-  }
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--color-primary);
+}
 
-  .mat-toolbar {
-    background-color: var(--color-primary);
-    color: white;
-  }
-  
-  .mat-button {
-    background-color: var(--color-accent);
-    color: white;
-  }
-  
-  .mat-button:hover {
-    background-color: var(--color-secondary);
-  }
-  
-  .home-card {
-    margin: 20px auto;
-    max-width: 600px;
-    background-color: var(--color-light-green);
-  }
-   
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Face ca pagina să umple înălțimea ferestrei */
+}
+
+.content-wrapper {
+  flex: 1; /* Umple tot spațiul rămas între header și footer */
+  padding: 20px;
+  display: flex;
+  flex-direction:column;
+}
+
+.app-header {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 10px 20px;
+}
+
+.app-footer {
+  background-color: var(--color-dark-green);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto; /* Asigură că footerul este împins spre partea de jos */
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.footer-buttons button {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.footer-buttons button:hover {
+  background-color: var(--color-secondary);
+}
+
+/* Stiluri pentru alte componente */
+.mat-toolbar {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.mat-card {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+}
+
+.home-card {
+  margin: 20px auto;
+  max-width: 600px;
+  background-color: var(--color-light-green);
+}
