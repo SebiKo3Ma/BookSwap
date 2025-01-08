@@ -5,27 +5,50 @@
 
   <div class="content-wrapper">
     <div class="homepage">
-        <h1>Welcome to BookSwap!</h1>
-        <p>Swap books, discover new adventures, make new friends. Use second-hand books, save the planet.</p>
-        <div class="title-card">
-            <div class="image-container">
-              <img src="assets/images/calatorie.jpg" alt="Book Cover" />
-            </div>
-            <div class="info-container">
-              <h2>Calatorie spre centrul Pamantului</h2>
-              <p><strong>Marian</strong>, Timișoara, Timiș</p>
-              <p class="description">...</p>
-            </div>
-            <div class="button-container">
-                <button class="more-info-button">Vezi detalii</button>
-            </div>
-        </div>     
+      <h1>Swap Books, Discover Adventures!</h1>
+      <p>Use second-hand books, save the planet, and make new friends!</p>
+      
+      <!-- Search Bar Section -->
+      <div class="search-container">
+        <input type="text" placeholder="Căutare cărți..." [(ngModel)]="searchQuery" />
+        <button (click)="searchBooks()">Căutare</button>
+      </div>
+      
+      <div *ngIf="searchQuery">
+        <button (click)="goBack()">Înapoi la cărțile recente</button>
+      </div>
+
+      <!-- Mesajul de "Nu am găsit cărți" -->
+      <div *ngIf="noResultsMessage">
+        <p>{{ noResultsMessage }}</p>
+      </div>
+
+      <!-- Recently Added Books -->
+      <h2>Cărți Adăugate Recent</h2>
+      <div *ngIf="noResultsMessage">
+        <p>{{ noResultsMessage }}</p>
+      </div>
+      <div class="recent-books">
+        <div class="title-card" *ngFor="let book of filteredBooks">
+          <div class="image-container">
+            <img [src]="book.image" alt="Book Cover" />
+          </div>
+          <div class="info-container">
+            <h2>{{ book.title }}</h2>
+            <p><strong>{{ book.author }}</strong>, {{ book.location }}</p>
+            <p class="description">{{ book.description }}</p>
+          </div>
+          <div class="button-container">
+            <button class="more-info-button" (click)="viewBookDetails(book)">Vezi detalii</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
   <footer class="app-footer">
     <div class="footer-buttons">
-
+  
     </div>
   </footer>
 </div>

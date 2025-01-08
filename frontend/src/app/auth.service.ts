@@ -1,16 +1,22 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root',  // Disponibil la nivel global
+  providedIn: 'root',
 })
 export class AuthService {
   private isAuthenticated = false;
+  private users = [
+    { username: 'admin', password: 'admin123' },
+    { username: 'user1', password: 'password1' },
+    { username: 'user2', password: 'password2' }
+  ]; // Lista de utilizatori hardcodată
 
-  constructor() { }
+  constructor() {}
 
   login(username: string, password: string): boolean {
-    // Logica de autentificare
-    if (username === 'admin' && password === 'admin') {
+    // Căutăm utilizatorul în lista hardcodată
+    const user = this.users.find(u => u.username === username && u.password === password);
+    if (user) {
       this.isAuthenticated = true;
       return true;
     }

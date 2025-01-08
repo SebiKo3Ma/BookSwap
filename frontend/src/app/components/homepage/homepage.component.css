@@ -1,3 +1,4 @@
+/* Cardul de carte */
 .title-card {
   display: flex;
   flex-direction: row;
@@ -7,10 +8,16 @@
   border-radius: 8px;
   padding: 16px;
   margin: 20px 0;
-  background-color: #e0e0e0; 
+  background-color: #e0e0e0;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
+.title-card:hover {
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2); /* Efect de hover pentru card */
+}
+
+/* Imagina cărții */
 .image-container img {
   width: 150px;
   height: 150px;
@@ -18,6 +25,7 @@
   border-radius: 4px;
 }
 
+/* Informațiile cărții */
 .info-container {
   flex: 1;
   margin-left: 20px;
@@ -27,6 +35,11 @@
   margin: 0;
   font-size: 1.5em;
   color: #333;
+  transition: color 0.3s ease;
+}
+
+.info-container h2:hover {
+  color: #bf6f60; /* Efect de hover pe titlu */
 }
 
 .info-container p {
@@ -40,6 +53,7 @@
   color: #666;
 }
 
+/* Container pentru butoane */
 .button-container {
   display: flex;
   align-items: flex-start;
@@ -47,8 +61,8 @@
 }
 
 .more-info-button {
-  background-color: #e0e0e0; 
-  color: #333; 
+  background-color: #e0e0e0;
+  color: #333;
   border: none;
   padding: 10px 20px;
   font-size: 1em;
@@ -58,6 +72,30 @@
 }
 
 .more-info-button:hover {
-  background-color: #bf6f60; 
-  color: white; 
+  background-color: #bf6f60;
+  color: white;
+}
+
+/* Media Query pentru dispozitive mobile */
+@media screen and (max-width: 768px) {
+  .title-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-container img {
+    width: 100%;
+    height: 150px; /* Reducem înălțimea */
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  .info-container {
+    margin-left: 0;
+  }
+
+  .more-info-button {
+    width: 100%;
+    text-align: center;
+  }
 }

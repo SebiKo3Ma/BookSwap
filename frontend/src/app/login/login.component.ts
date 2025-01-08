@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';  // Dacă folosești ngModel
 import { CommonModule } from '@angular/common'; // Importă CommonModule
+import { AuthService } from '../auth.service';  // Verifică dacă calea este corectă
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +15,20 @@ export class LoginComponent {
   username = '';       // Definește username-ul
   password = '';       // Definește parola
   loginFailed = false; // Inițializează loginFailed ca false
-  
+
+  constructor(
+    private authService: AuthService,
+    private router: Router // Injectează Router pentru navigare
+  ) {}
   // Funcția de login
   login() {
-    if (this.username === 'admin' && this.password === 'admin') {
-      console.log('Login successful!');
-      this.loginFailed = false; // Resetăm loginFailed la false la un login corect
+    const isAuthenticated = this.authService.login(this.username, this.password);
+    if (isAuthenticated) {
+      this.loginFailed = false;
+      this.router.navigate(['/home']);
+      // Poți naviga spre pagina principală sau altă pagină după logare
     } else {
-      console.log('Login failed!');
-      this.loginFailed = true; // Setăm loginFailed la true în caz de login eșuat
+      this.loginFailed = true;
     }
   }
 }

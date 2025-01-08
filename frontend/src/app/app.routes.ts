@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HelpComponent } from './components/help/help.component';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './/login/login.component';
 import { AuthGuard } from './auth.guard'; // Importă AuthGuard
 
 export const appRoutes: Routes = [
