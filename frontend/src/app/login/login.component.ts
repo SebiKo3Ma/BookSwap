@@ -31,4 +31,7 @@ export class LoginComponent {
       this.loginFailed = true;
     }
   }
+  navigateToRegister() {
+    this.router.navigate(['/register']);
+  }
 }

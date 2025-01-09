@@ -6,13 +6,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../auth.service';  // Verifică dacă calea este corectă
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   standalone: true,
-  imports: [CommonModule, RouterModule, MatCardModule, MatDividerModule, MatToolbarModule], // Adăugăm RouterModule
+  imports: [CommonModule,MatButtonModule, RouterModule, MatCardModule, MatDividerModule, MatToolbarModule], // Adăugăm RouterModule
 })
 export class HeaderComponent {
   isAuthenticated = false;

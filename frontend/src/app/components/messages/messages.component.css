@@ -1,0 +1,90 @@
+.messages-container {
+    display: flex;
+    height: 100%;
+  }
+  
+  .conversations-list {
+    width: 30%;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .conversations-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .conversations-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .conversations-list li.active {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+  .conversation-view {
+    width: 70%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .message.mine {
+    text-align: right;
+  }
+  
+  .message p {
+    margin: 0;
+  }
+  
+  .message-input {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .message-input input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .message-input button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .message-input button:hover {
+    background-color: #0056b3;
+  }
+  
+  .no-messages,
+.no-conversation {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  margin-top: 20px;
+}
+
+.no-messages p,
+.no-conversation p {
+  margin: 0;
+}

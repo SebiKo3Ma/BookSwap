@@ -1,0 +1,50 @@
+<div class="messages-container">
+    <!-- Sidebar cu lista de conversații -->
+    <div class="conversations-list">
+      <h3>Conversații</h3>
+      <ul>
+        <li
+          *ngFor="let conversation of conversations"
+          (click)="selectConversation(conversation)"
+          [class.active]="selectedConversation?.id === conversation.id"
+        >
+          <strong>{{ conversation.name }}</strong>
+          <p>{{ conversation.lastMessage }}</p>
+        </li>
+      </ul>
+      <div *ngIf="conversations.length === 0" class="no-messages">
+        <p>Nu ai încă nicio conversație.</p>
+      </div>
+    </div>
+  
+    <!-- Zona principală pentru mesaje -->
+    <div class="conversation-view" *ngIf="selectedConversation; else noConversation">
+      <h3>Conversație cu {{ selectedConversation.name }}</h3>
+      <div class="messages">
+        <div
+          *ngFor="let message of selectedConversation.messages"
+          class="message"
+          [class.mine]="message.sender === 'Eu'"
+        >
+          <strong *ngIf="message.sender !== 'Eu'">{{ message.sender }}</strong>
+          <p>{{ message.text }}</p>
+        </div>
+      </div>
+      <div class="message-input">
+        <input
+          type="text"
+          [(ngModel)]="newMessage"
+          placeholder="Scrie un mesaj..."
+        />
+        <button (click)="sendMessage()">Trimite</button>
+      </div>
+    </div>
+  
+    <!-- Mesaj dacă nicio conversație nu este selectată -->
+    <ng-template #noConversation>
+      <div class="no-conversation">
+        <p>Selectează o conversație din listă pentru a începe să vorbești.</p>
+      </div>
+    </ng-template>
+  </div>
+  

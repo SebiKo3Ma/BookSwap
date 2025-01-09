@@ -82,3 +82,19 @@ body {
   max-width: 600px;
   background-color: var(--color-light-green);
 }
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #bf6f60; 
+}
+
+.spacer {
+  flex: 1;
+}
+
+.mat-button {
+  color: white;
+  font-size: 16px;
+}

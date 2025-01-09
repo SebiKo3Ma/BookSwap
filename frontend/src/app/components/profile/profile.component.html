@@ -1,0 +1,24 @@
+<div class="profile-container">
+    <div class="user-info">
+      <h1>{{ user.username }}</h1>
+      <p><strong>Oraș:</strong> {{ user.city }}</p>
+      <p><strong>Județ:</strong> {{ user.county }}</p>
+    </div>
+  
+    <div class="user-books">
+      <h2>Cărțile mele</h2>
+      <div *ngIf="userBooks.length === 0">
+        <p>Nu ai adăugat încă nicio carte.</p>
+      </div>
+      <div class="book-card" *ngFor="let book of userBooks">
+        <div class="image-container">
+          <img [src]="book.image" alt="Book Cover" />
+        </div>
+        <div class="info-container">
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

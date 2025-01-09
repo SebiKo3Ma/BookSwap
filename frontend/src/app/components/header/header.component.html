@@ -10,5 +10,11 @@
   <div *ngIf="isAuthenticated">
     <button (click)="logout()">Logout</button>
   </div>
+
+  <nav class="navigation">
+    <button routerLink="/">Home</button>
+    <button routerLink="/profile">Profil</button>
+    <button routerLink="/login">Logout</button>
+  </nav>
 </header>
 
