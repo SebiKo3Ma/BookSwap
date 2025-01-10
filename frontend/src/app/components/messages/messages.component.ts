@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-messages',
@@ -19,6 +20,16 @@ export class MessagesComponent {
   selectedConversation: any = null;
   newMessage = '';
 
+  constructor(private route: ActivatedRoute) {}
+  ngOnInit() {
+    // Verificăm dacă există query parameters în URL
+    this.route.queryParams.subscribe((params) => {
+      const user = params['user']; // Preia utilizatorul din query params
+      if (user) {
+        this.startConversation(user); // Inițiază conversația
+      }
+    });
+  }
   selectConversation(conversation: any) {
     this.selectedConversation = {
       ...conversation,
@@ -37,5 +48,26 @@ export class MessagesComponent {
       sender: 'Eu',
     });
     this.newMessage = '';
+  }
+  startConversation(user: string) {
+    // Caută conversația cu utilizatorul respectiv
+    const existingConversation = this.conversations.find(
+      (conversation) => conversation.name === user
+    );
+
+    if (existingConversation) {
+      // Selectează conversația dacă există deja
+      this.selectConversation(existingConversation);
+    } else {
+      // Creează o conversație nouă dacă nu există
+      const newConversation = {
+        id: this.conversations.length + 1,
+        name: user,
+        lastMessage: '',
+        messages: [],
+      };
+      this.conversations.push(newConversation);
+      this.selectConversation(newConversation);
+    }
   }
 }

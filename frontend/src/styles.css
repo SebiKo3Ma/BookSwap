@@ -98,3 +98,17 @@ body {
   color: white;
   font-size: 16px;
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; /* Împinge footerul în jos pe toată înălțimea paginii */
+}
+
+main {
+  flex-grow: 1;  /* Acesta va ocupa spațiul disponibil dintre header și footer */
+}
+
+footer {
+  margin-top: auto; /* Asigură că footerul este întotdeauna plasat la capătul paginii */
+}

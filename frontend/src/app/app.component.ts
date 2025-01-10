@@ -12,25 +12,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <mat-toolbar>
-    <span routerLink="/">BookSwap</span>
-    <span class="spacer"></span>
-      <button mat-button routerLink="/profile">Profil</button>
-      <button mat-button routerLink="/messages">Mesaje</button>
-      <button mat-button class="logout-button" (click)="logout()">Logout</button>
-    </mat-toolbar>
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-    <footer class="app-footer">
-      <p>&copy; 2024 BookSwap. All rights reserved.</p>
-      <div class="footer-buttons">
-        <button routerLink="/about-us">About Us</button>
-        <button routerLink="/help">Help</button>
-      </div>
-    </footer>
-  `,
+  templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   standalone: true,
   imports: [

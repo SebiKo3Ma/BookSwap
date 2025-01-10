@@ -7,13 +7,15 @@ import { LoginComponent } from './/login/login.component';
 import { AuthGuard } from './auth.guard'; // Importă AuthGuard
 import { RegisterComponent } from './register/register.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 export const appRoutes: Routes = [
-  { path: 'home', component: HomepageComponent, canActivate: [AuthGuard] }, // Protejează ruta home
+  { path: 'home', component: HomepageComponent, canActivate: [AuthGuard]}, 
   { path: 'about-us', component: AboutUsComponent, canActivate: [AuthGuard] },
   { path: 'help', component: HelpComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'messages', component: MessagesComponent, canActivate: [AuthGuard] },
+  { path: 'book-details/:id', component: BookDetailsComponent, canActivate: [AuthGuard]},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' }

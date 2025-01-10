@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';  // Importă FormsModule pentru ngModel
 import { CommonModule } from '@angular/common'; // Importă CommonModule pentru directivele de bază
 import { MatButtonModule } from '@angular/material/button'; // Dacă folosești butoane Material
 import { MatCardModule } from '@angular/material/card'; // Dacă folosești carduri Material
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -19,6 +21,7 @@ export class HomepageComponent {
   searchQuery = '';
   recentBooks = [
     {
+      id: 1,
       title: 'Calatorie spre centrul Pamantului',
       author: 'Jules Verne',
       location: 'Timișoara, Timiș',
@@ -26,6 +29,7 @@ export class HomepageComponent {
       image: 'assets/images/calatorie.jpg',
     },
     {
+      id: 2,
       title: 'Moby Dick',
       author: 'Herman Melville',
       location: 'Cluj-Napoca, Cluj',
@@ -37,6 +41,8 @@ export class HomepageComponent {
 
   filteredBooks = [...this.recentBooks];
   noResultsMessage: string = '';
+
+  constructor(private router: Router) {} // Injectează serviciul Router
 
   searchBooks() {
     if (this.searchQuery.trim() === '') {
@@ -56,6 +62,7 @@ export class HomepageComponent {
       this.filteredBooks = searchResults;
     }
   }
+
   goBack() {
     this.searchQuery = '';  // Șterge termenul de căutare
     this.filteredBooks = [...this.recentBooks];  // Restabilește lista cu toate cărțile recente
@@ -63,7 +70,6 @@ export class HomepageComponent {
   }
 
   viewBookDetails(book: any) {
-    console.log('Viewing details for:', book);
-    // Implement navigation to book details page
+    this.router.navigate(['/book-details', book.id]); // Folosește un ID unic pentru carte
   }
 }

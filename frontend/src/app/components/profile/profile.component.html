@@ -4,19 +4,47 @@
       <p><strong>Oraș:</strong> {{ user.city }}</p>
       <p><strong>Județ:</strong> {{ user.county }}</p>
     </div>
-  
+    <button (click)="toggleAddBookForm()" class="add-button">Adaugă Carte</button>
+
+    <div *ngIf="showAddBookForm" class="add-book-form">
+      <h3>Adaugă o carte</h3>
+      <label>
+        Titlu:
+        <input type="text" [(ngModel)]="newBook.title" />
+      </label>
+      <label>
+        Autor:
+        <input type="text" [(ngModel)]="newBook.author" />
+      </label>
+      <label>
+        Oraș:
+        <input type="text" [(ngModel)]="newBook.city" />
+      </label>
+      <label>
+        Județ:
+        <input type="text" [(ngModel)]="newBook.county" />
+      </label>
+      <label>
+        URL Imagine:
+        <input type="text" [(ngModel)]="newBook.image" />
+      </label>
+      <button (click)="addBook()">Adaugă</button>
+      <button (click)="toggleAddBookForm()">Anulează</button>
+    </div>
+
     <div class="user-books">
       <h2>Cărțile mele</h2>
       <div *ngIf="userBooks.length === 0">
         <p>Nu ai adăugat încă nicio carte.</p>
       </div>
-      <div class="book-card" *ngFor="let book of userBooks">
+      <div class="book-card" *ngFor="let book of userBooks; let i = index">
         <div class="image-container">
           <img [src]="book.image" alt="Book Cover" />
         </div>
         <div class="info-container">
           <h3>{{ book.title }}</h3>
           <p>{{ book.description }}</p>
+          <button (click)="deleteBook(i)">Șterge cartea</button>
         </div>
       </div>
     </div>
