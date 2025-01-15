@@ -12,13 +12,14 @@ export class AuthController {
 
   // Login route
   @Post('login')
-  async login(@Body() body: { email: string; password: string }) {
-    const user = await this.authService.validateUser(body.email, body.password);
+  async login(@Body() body: { username: string; password: string }) {
+    const user = await this.authService.validateUser(body.username, body.password); // Use username instead of email
     if (!user) {
-      return { message: 'Invalid credentials' };
+      return { message: 'Invalid credentials' }; // Handle invalid login
     }
-    return this.authService.login(user);
+    return this.authService.login(user); // Return JWT token upon successful login
   }
+
 
   // Register route
   @Post('register')

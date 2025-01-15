@@ -10,10 +10,10 @@ export class UserService {
     private userRepository: Repository<User>, // Inject user repository for DB operations
   ) {}
 
-  // Find user by email
-  async findOneByEmail(email: string): Promise<User | null> {
-    return this.userRepository.findOne({ where: { email } }); // Look for user by email
+  async findUserByUsername(username: string): Promise<User | null> {
+    return this.userRepository.findOne({ where: { username } });
   }
+  
 
   // Create a new user
   async createUser(

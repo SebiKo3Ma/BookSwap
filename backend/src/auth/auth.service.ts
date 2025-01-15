@@ -11,14 +11,18 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  // Validate user credentials (email/password)
-  async validateUser(email: string, password: string): Promise<User | null> {
-    const user = await this.userService.findOneByEmail(email); // Assuming you're using email to find user
-    if (user && await bcrypt.compare(password, user.password)) {
-      return user; // Return user if passwords match
-    }
-    return null; // Return null if credentials are invalid
+  async comparePasswords(plainPassword: string, hashedPassword: string): Promise<boolean> {
+    return bcrypt.compare(plainPassword, hashedPassword); // Compare the plain password with the hashed one
   }
+
+  async validateUser(username: string, password: string): Promise<User | null> {
+    const user = await this.userService.findUserByUsername(username); // Find by username
+    if (user && await this.comparePasswords(password, user.password)) { // Compare hashed password
+      return user;
+    }
+    return null;
+  }
+  
 
   // Issue JWT token
   async login(user: User) {
