@@ -1,6 +1,8 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserService } from '../user/user.service';
+import { UnauthorizedException } from '@nestjs/common';
+
 import { User } from '../user/user.entity';
 
 @Controller('auth')
@@ -13,11 +15,12 @@ export class AuthController {
   // Login route
   @Post('login')
   async login(@Body() body: { username: string; password: string }) {
-    const user = await this.authService.validateUser(body.username, body.password); // Use username instead of email
+    const user = await this.authService.validateUser(body.username, body.password);
     if (!user) {
-      return { message: 'Invalid credentials' }; // Handle invalid login
+      throw new UnauthorizedException('Invalid credentials');
     }
-    return this.authService.login(user); // Return JWT token upon successful login
+    const token = await this.authService.login(user); // Generate token
+    return { access_token: token }; // Return the token
   }
 
 

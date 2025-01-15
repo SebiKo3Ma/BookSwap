@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthService } from '../auth.service';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,31 +25,37 @@ export class LoginComponent {
     private http: HttpClient
   ) {}
 
-  login() {
+  async login() {
     this.loading = true;
-
-    // Send login request to the backend
-    this.http.post<any>('/auth/login', {
-      email: this.username,
-      password: this.password
-    }).subscribe(
-      (response) => {
-        if (response && response.access_token) {
-          localStorage.setItem('authToken', response.access_token);
-          this.loginFailed = false;
-          this.router.navigate(['/home']);
-        } else {
-          this.loginFailed = true;
-        }
-        this.loading = false;
-      },
-      (error) => {
-        console.error('Login failed', error);
+  
+    try {
+      const response = await firstValueFrom(this.http.post<any>('/auth/login', {
+        username: this.username,
+        password: this.password
+      }));
+  
+      console.log('Login response:', response);  // Log the response for debugging
+  
+      // Access the access_token nested inside the response
+      const token = response?.access_token?.access_token;
+  
+      if (token) {
+        console.log('Login succesful:', response);  // Log the response for debugging
+        localStorage.setItem('authToken', token);
+        this.loginFailed = false;
+        this.router.navigate(['/home']);
+      } else {
         this.loginFailed = true;
-        this.loading = false;
+        console.log('Login token issue:', response);
       }
-    );
+    } catch (error) {
+      console.error('Login failed', error);
+      this.loginFailed = true;
+    } finally {
+      this.loading = false;
+    }
   }
+  
 
   navigateToRegister() {
     this.router.navigate(['/register']);
