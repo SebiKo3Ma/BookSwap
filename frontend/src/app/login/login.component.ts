@@ -1,36 +1,55 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';  // Dacă folosești ngModel
-import { CommonModule } from '@angular/common'; // Importă CommonModule
-import { AuthService } from '../auth.service';  // Verifică dacă calea este corectă
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
-  standalone: true,  // Specifică că această componentă este standalone
-  imports: [FormsModule, CommonModule],  // Adaugă CommonModule în imports
+  standalone: true,
+  imports: [FormsModule, CommonModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';       // Definește username-ul
-  password = '';       // Definește parola
-  loginFailed = false; // Inițializează loginFailed ca false
+  username = '';
+  password = '';
+  loginFailed = false;
+  loading = false;
 
   constructor(
     private authService: AuthService,
-    private router: Router // Injectează Router pentru navigare
+    private router: Router,
+    private http: HttpClient
   ) {}
-  // Funcția de login
+
   login() {
-    const isAuthenticated = this.authService.login(this.username, this.password);
-    if (isAuthenticated) {
-      this.loginFailed = false;
-      this.router.navigate(['/home']);
-      // Poți naviga spre pagina principală sau altă pagină după logare
-    } else {
-      this.loginFailed = true;
-    }
+    this.loading = true;
+
+    // Send login request to the backend
+    this.http.post<any>('/auth/login', {
+      email: this.username,
+      password: this.password
+    }).subscribe(
+      (response) => {
+        if (response && response.access_token) {
+          localStorage.setItem('authToken', response.access_token);
+          this.loginFailed = false;
+          this.router.navigate(['/home']);
+        } else {
+          this.loginFailed = true;
+        }
+        this.loading = false;
+      },
+      (error) => {
+        console.error('Login failed', error);
+        this.loginFailed = true;
+        this.loading = false;
+      }
+    );
   }
+
   navigateToRegister() {
     this.router.navigate(['/register']);
   }

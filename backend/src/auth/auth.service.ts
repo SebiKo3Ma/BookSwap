@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
 import { User } from '../user/user.entity';
-import * as bcrypt from 'bcryptjs';
 
 @Injectable()
 export class AuthService {
@@ -11,21 +11,26 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
-  // Validate user credentials and generate JWT token
-  async validateUser(email: string, password: string): Promise<any> {
-    const user = await this.userService.findOneByEmail(email);
-    if (user && bcrypt.compareSync(password, user.password)) {
-      const { password, ...result } = user;
-      return result;
+  // Validate user credentials (email/password)
+  async validateUser(email: string, password: string): Promise<User | null> {
+    const user = await this.userService.findOneByEmail(email); // Assuming you're using email to find user
+    if (user && await bcrypt.compare(password, user.password)) {
+      return user; // Return user if passwords match
     }
-    return null;
+    return null; // Return null if credentials are invalid
   }
 
-  // Generate JWT token for user
+  // Issue JWT token
   async login(user: User) {
-    const payload = { username: user.username, sub: user.id };
+    const payload = { email: user.email, sub: user.id };  // Use email and user ID for the JWT payload
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: this.jwtService.sign(payload),  // Generate JWT token
     };
+  }
+
+  // Hash password before storing
+  async hashPassword(password: string): Promise<string> {
+    const salt = await bcrypt.genSalt(10);  // Generate salt for bcrypt
+    return bcrypt.hash(password, salt);  // Hash password with the generated salt
   }
 }

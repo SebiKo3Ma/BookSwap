@@ -1,32 +1,42 @@
 <div class="register-container">
-    <h2>Înregistrare</h2>
-    <form (submit)="register()" class="register-form">
-      <input
-        type="text"
-        placeholder="Username"
-        [(ngModel)]="username"
-        required
-      />
-      <input
-        type="password"
-        placeholder="Password"
-        [(ngModel)]="password"
-        required
-      />
-      <input
-        type="text"
-        placeholder="Oraș"
-        [(ngModel)]="city"
-        required
-      />
-      <input
-        type="text"
-        placeholder="Județ"
-        [(ngModel)]="county"
-        required
-      />
-      <button type="submit">Înregistrează-te</button>
-    </form>
-    <p>Ai deja un cont? <button (click)="navigateToLogin()">Conectează-te</button></p>
-  </div>
-  
+  <h2>Înregistrare</h2>
+  <form (ngSubmit)="register()" class="register-form">
+    <input
+      type="text"
+      placeholder="Username"
+      [(ngModel)]="username"
+      name="username"
+      required
+    />
+    <input
+      type="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+      name="email"
+      required
+    />
+    <input
+      type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      name="password"
+      required
+    />
+    <input
+      type="text"
+      placeholder="Name"
+      [(ngModel)]="name"
+      name="name"
+      required
+    />
+    <input
+      type="text"
+      placeholder="City"
+      [(ngModel)]="city"
+      name="city"
+      required
+    />
+    <button type="submit">Înregistrează-te</button>
+  </form>
+  <p>Ai deja un cont? <button (click)="navigateToLogin()">Conectează-te</button></p>
+</div>
