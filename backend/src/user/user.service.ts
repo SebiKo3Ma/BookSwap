@@ -8,7 +8,7 @@ import * as bcrypt from 'bcryptjs';
 export class UserService {
   constructor(
     @InjectRepository(User)
-    private userRepository: Repository<User>,
+    private readonly userRepository: Repository<User>,
   ) {}
 
   // Find a user by email
