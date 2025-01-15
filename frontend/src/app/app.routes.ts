@@ -3,7 +3,7 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { HelpComponent } from './components/help/help.component';
 import {ProfileComponent}from './components/profile/profile.component';
-import { LoginComponent } from './/login/login.component';
+import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard'; // Importă AuthGuard
 import { RegisterComponent } from './register/register.component';
 import { MessagesComponent } from './components/messages/messages.component';

@@ -11,4 +11,8 @@ export class AppController {
   serveFrontend(@Res() res: Response) {
     res.sendFile(join(__dirname, '..', 'public', 'frontend', 'index.html'));
   }
+
+  getHome() {
+    return 'Welcome to BookSwap App';  // You can return anything here, like a static message or file
+  }
 }
