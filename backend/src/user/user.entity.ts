@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Listing } from '../listing/listing.entity';
 
 @Entity('users')
 export class User {
@@ -22,4 +23,8 @@ export class User {
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   date_joined: Date;
+
+  @OneToMany(() => Listing, (listing) => listing.user)
+  listings: Listing[];
+
 }
