@@ -30,6 +30,7 @@ export class AppComponent {
   constructor(private router: Router) {}
 
   logout() {
+    localStorage.removeItem('authToken');
     console.log('User logged out');
     this.router.navigate(['/login']); // Navigare către pagina de Login
   }

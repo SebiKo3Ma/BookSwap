@@ -14,6 +14,7 @@ export class AuthService {
 
   // Handle logout by removing the token from localStorage
   logout(): void {
+    console.log("Logging out user!");
     localStorage.removeItem('authToken');
   }
 
