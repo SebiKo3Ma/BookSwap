@@ -1,4 +1,4 @@
-import { IsString, IsNotEmpty } from 'class-validator';
+import { IsString, IsNotEmpty, IsInt } from 'class-validator';
 
 export class CreateListingDto {
   @IsString()
@@ -17,7 +17,6 @@ export class CreateListingDto {
   @IsNotEmpty()
   publisher: string;
 
-  @IsString()
-  @IsNotEmpty()
-  username: string; // This is the foreign key referencing the user's username
+  @IsInt()
+  userId: number;  // Foreign key referencing the user's ID
 }

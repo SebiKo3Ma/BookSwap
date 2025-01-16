@@ -16,15 +16,15 @@ export class ListingService {
 
   // Create a new listing
   async createListing(createListingDto: CreateListingDto): Promise<Listing> {
-    const { username, ...listingData } = createListingDto;
+    const { userId, ...listingData } = createListingDto;
 
-    // Find the user by username
-    const user = await this.userRepository.findOne({ where: { username } });
+    // Find the user by userId
+    const user = await this.userRepository.findOne({ where: { id: userId } });
     if (!user) {
-      throw new NotFoundException(`User with username '${username}' not found`);
+      throw new NotFoundException(`User with ID '${userId}' not found`);
     }
 
-    // Create and save the listing
+    // Create and save the listing, using the user object
     const listing = this.listingRepository.create({ ...listingData, user });
     return this.listingRepository.save(listing);
   }
