@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common'; // Adaugă acest import pentru a folosi *ngIf și *ngFor
 import { FormsModule } from '@angular/forms';
 
+
 @Component({
   selector: 'app-profile',
   standalone: true,
