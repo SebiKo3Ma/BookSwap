@@ -2,7 +2,9 @@
     <img [src]="book.image" alt="{{ book.title }}">
     <h1>{{ book.title }}</h1>
     <h3>{{ book.author }}</h3>
+    <p><strong>Editura:</strong> {{ book.publisher }}</p>
     <p><strong>Locație:</strong> {{ book.location }}</p>
+    <p><strong>Utilizator:</strong> {{ book.user }}</p>
     <p>{{ book.description }}</p>
   
     <button class="send-message-btn" (click)="sendMessage()">Scrie către utilizator</button>

@@ -16,19 +16,21 @@ export class BookDetailsComponent implements OnInit {
       id: 1,
       title: 'Călătorie spre centrul Pământului',
       author: 'Jules Verne',
-      location: 'Timișoara, Timiș',
+      location: 'Timișoara',
       description: 'O aventură fascinantă despre o călătorie spre centrul Pământului.',
       image: 'assets/images/calatorie.jpg',
-      user: 'John Doe'
+      user: 'John Doe',
+      publisher:'Fals'
     },
     {
       id: 2,
       title: 'Moby Dick',
       author: 'Herman Melville',
-      location: 'Cluj-Napoca, Cluj',
+      location: 'Cluj-Napoca',
       description: 'O poveste clasică despre obsesia unui căpitan de vas.',
       image: 'assets/images/moby-dick.jpg',
-      user: 'Jane Doe'
+      user: 'Jane Doe',
+      publisher:'Fals'
     },
   ];
 
