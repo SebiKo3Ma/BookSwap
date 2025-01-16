@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
+import { ListingModule } from './listing/listing.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -20,6 +21,7 @@ import { AppService } from './app.service';
     }),
     UserModule,
     AuthModule,
+    ListingModule,
   ],
   controllers: [AppController],  // Make sure this is included
   providers: [AppService],

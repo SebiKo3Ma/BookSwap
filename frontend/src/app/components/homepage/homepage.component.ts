@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';  // Importă FormsModule pentru ngModel
-import { CommonModule } from '@angular/common'; // Importă CommonModule pentru directivele de bază
-import { MatButtonModule } from '@angular/material/button'; // Dacă folosești butoane Material
-import { MatCardModule } from '@angular/material/card'; // Dacă folosești carduri Material
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-homepage',
@@ -11,54 +13,48 @@ import { MatCardModule } from '@angular/material/card'; // Dacă folosești card
   styleUrls: ['./homepage.component.css'],
   standalone: true,
   imports: [
-    FormsModule,  // Adaugă FormsModule pentru a folosi ngModel
-    CommonModule, // Adaugă CommonModule pentru directivele de bază
-    MatButtonModule, // Importă butoanele din Material
-    MatCardModule // Importă cardurile din Material
+    CommonModule,
+    MatButtonModule,
+    MatCardModule,
+    FormsModule,
+    HttpClientModule
   ]
 })
 export class HomepageComponent {
   searchQuery = '';
-  recentBooks = [
-    {
-      id: 1,
-      title: 'Calatorie spre centrul Pamantului',
-      author: 'Jules Verne',
-      location: 'Timișoara',
-      description: 'O aventură fascinantă despre o călătorie spre centrul Pământului.',
-      image: 'assets/images/calatorie.jpg',
-      user:'Vasile',
-      publisher:'Fals'
-    },
-    {
-      id: 2,
-      title: 'Moby Dick',
-      author: 'Herman Melville',
-      location: 'Cluj-Napoca',
-      description: 'O poveste clasică despre obsesia unui căpitan de vas.',
-      image: 'assets/images/moby-dick.jpg',
-      user:'Veronica',
-      publisher:'Fals'
-    },
-    // Add more books here
-  ];
-
-  filteredBooks = [...this.recentBooks];
+  listings: any[] = [];
+  filteredBooks: any[] = [];
   noResultsMessage: string = '';
 
-  constructor(private router: Router) {} // Injectează serviciul Router
+  constructor(private router: Router, private http: HttpClient) {}
 
-  searchBooks() {
+  async ngOnInit(): Promise<void> {
+    await this.fetchListings();  // Fetch listings when component is initialized
+  }
+
+  // Fetch listings from the backend using firstValueFrom
+  async fetchListings(): Promise<void> {
+    try {
+      const data = await firstValueFrom(this.http.get<any[]>('/listings'));
+      this.listings = data;
+      this.filteredBooks = [...this.listings];  // Set filtered books initially to all listings
+    } catch (error) {
+      console.error('Error fetching listings:', error);
+      this.noResultsMessage = 'Eroare la încărcarea listărilor.';
+    }
+  }
+
+  searchBooks(): void {
     if (this.searchQuery.trim() === '') {
       this.noResultsMessage = 'Introduceți un termen de căutare.';
       return;
     }
-  
-    const searchResults = this.recentBooks.filter(book => 
+
+    const searchResults = this.filteredBooks.filter(book => 
       book.title.toLowerCase().includes(this.searchQuery.toLowerCase()) || 
       book.author.toLowerCase().includes(this.searchQuery.toLowerCase())
     );
-  
+
     if (searchResults.length === 0) {
       this.noResultsMessage = 'Nu am găsit nici o carte.';
     } else {
@@ -67,13 +63,13 @@ export class HomepageComponent {
     }
   }
 
-  goBack() {
-    this.searchQuery = '';  // Șterge termenul de căutare
-    this.filteredBooks = [...this.recentBooks];  // Restabilește lista cu toate cărțile recente
-    this.noResultsMessage = '';  // Șterge mesajul de "nu s-au găsit cărți"
+  goBack(): void {
+    this.searchQuery = '';  // Clear search query
+    this.filteredBooks = [...this.listings];  // Reset to all listings
+    this.noResultsMessage = '';  // Clear no results message
   }
 
-  viewBookDetails(book: any) {
-    this.router.navigate(['/book-details', book.id]); // Folosește un ID unic pentru carte
+  viewBookDetails(book: any): void {
+    this.router.navigate(['/book-details', book.listing_id]); // Use unique ID for book
   }
 }

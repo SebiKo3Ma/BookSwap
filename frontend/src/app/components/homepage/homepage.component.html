@@ -31,12 +31,12 @@
       <div class="recent-books">
         <div class="title-card" *ngFor="let book of filteredBooks">
           <div class="image-container">
-            <img [src]="book.image" alt="Book Cover" />
+            <img [src]="book.image || 'default-image.jpg'" alt="Book Cover" />  <!-- Optional fallback image -->
           </div>
           <div class="info-container">
             <h2>{{ book.title }}</h2>
             <p><strong>{{ book.author }}</strong> - {{ book.publisher }}</p>
-            <p><strong>{{ book.user }}</strong>, {{ book.location }}</p>
+            <p><strong>{{ book.user?.username }}</strong></p>
             <p class="description">{{ book.description }}</p>
           </div>
           <div class="button-container">
