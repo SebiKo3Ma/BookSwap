@@ -11,10 +11,10 @@ import { AppService } from './app.service';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'bookswap.cluster-cnaq6wg82x7x.eu-central-1.rds.amazonaws.com',
       port: 5432,
-      username: 'admin',
-      password: 'admin',
+      username: 'postgres',
+      password: '',
       database: 'bookswap',
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // Auto-load entities
       synchronize: true, // Set to false in production
