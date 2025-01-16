@@ -88,3 +88,24 @@
 .no-conversation p {
   margin: 0;
 }
+
+p, h1, h2{
+  color: white;
+}
+
+button{
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+
+input{
+  padding: 10px;
+  border-radius: 10px;
+}
+
+strong, h3{
+  color: aqua;
+  
+}

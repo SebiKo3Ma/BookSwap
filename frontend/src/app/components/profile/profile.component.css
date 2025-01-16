@@ -9,12 +9,12 @@
   
   .user-info h1 {
     font-size: 2em;
-    color: #000000;
+    color: #fff;
   }
   
   .user-info p {
     font-size: 1em;
-    color: #000000;
+    color: #fff;
   }
   
   .user-books {
@@ -84,7 +84,7 @@
   }
   
   .add-book-form input {
-    width: 100%;
+    width: 95%;
     padding: 5px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -107,3 +107,22 @@
     margin: 0;
   }
   
+  p, h1, h2, label, h3{
+    color: white;
+  }
+  
+  button{
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+  
+  
+  input{
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .user-info{
+    color: white;
+  }
