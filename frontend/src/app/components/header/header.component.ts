@@ -20,14 +20,14 @@ export class HeaderComponent {
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  login(username: string, password: string) {
-    if (this.authService.login(username, password)) {
-      this.isAuthenticated = true;
-      console.log('Login successful');
-    } else {
-      console.log('Login failed');
-    }
-  }
+  // login(username: string, password: string) {
+  //   if (this.authService.login(username, password)) {
+  //     this.isAuthenticated = true;
+  //     console.log('Login successful');
+  //   } else {
+  //     console.log('Login failed');
+  //   }
+  // }
   logout() {
     this.authService.logout(); // Apelează funcția logout din serviciul AuthService
     this.isAuthenticated = false; // Resetează starea de autentificare

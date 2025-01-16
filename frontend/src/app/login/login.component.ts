@@ -36,14 +36,21 @@ export class LoginComponent {
   
       console.log('Login response:', response);  // Log the response for debugging
   
-      // Access the access_token nested inside the response
       const token = response?.access_token?.access_token;
   
       if (token) {
-        console.log('Login succesful:', response);  // Log the response for debugging
+        console.log('Login successful:', response);  // Log the response for debugging
         localStorage.setItem('authToken', token);
+  
         this.loginFailed = false;
-        this.router.navigate(['/home']);
+  
+        // Ensure the navigation occurs after the token is stored
+        this.router.navigateByUrl('/home').then(() => {
+          console.log('Navigation to home successful');
+        }).catch(error => {
+          console.error('Navigation failed', error);
+        });
+        
       } else {
         this.loginFailed = true;
         console.log('Login token issue:', response);
@@ -55,6 +62,7 @@ export class LoginComponent {
       this.loading = false;
     }
   }
+  
   
 
   navigateToRegister() {

@@ -3,9 +3,9 @@
     <span>BookSwap</span> <!-- Textul rămâne acolo -->
   </div>
 
-  <div *ngIf="!isAuthenticated">
+  <!-- <div *ngIf="!isAuthenticated">
     <button (click)="login('admin', 'admin')">Login</button>
-  </div>
+  </div> -->
 
   <div *ngIf="isAuthenticated">
     <button (click)="logout()">Logout</button>

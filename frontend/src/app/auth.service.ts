@@ -4,30 +4,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  private isAuthenticated = false;
-  private users = [
-    { username: 'admin', password: 'admin123' },
-    { username: 'user1', password: 'password1' },
-    { username: 'user2', password: 'password2' }
-  ]; // Lista de utilizatori hardcodată
-
   constructor() {}
 
-  login(username: string, password: string): boolean {
-    // Căutăm utilizatorul în lista hardcodată
-    const user = this.users.find(u => u.username === username && u.password === password);
-    if (user) {
-      this.isAuthenticated = true;
-      return true;
-    }
-    return false;
-  }
-
-  logout(): void {
-    this.isAuthenticated = false;
-  }
-
+  // Check if the user is logged in based on the token in localStorage
   isLoggedIn(): boolean {
-    return this.isAuthenticated;
+    const token = localStorage.getItem('authToken');
+    return !!token; // Return true if the token exists
+  }
+
+  // Handle logout by removing the token from localStorage
+  logout(): void {
+    localStorage.removeItem('authToken');
+  }
+
+  // Optional: Add a method to decode and extract information from the token if needed
+  getToken(): string | null {
+    return localStorage.getItem('authToken');
   }
 }

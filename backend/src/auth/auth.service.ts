@@ -23,7 +23,6 @@ export class AuthService {
     return null;
   }
   
-
   // Issue JWT token
   async login(user: User) {
     const payload = { email: user.email, sub: user.id };  // Use email and user ID for the JWT payload
