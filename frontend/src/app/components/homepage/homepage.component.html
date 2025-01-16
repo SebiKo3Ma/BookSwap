@@ -31,7 +31,7 @@
       <div class="recent-books">
         <div class="title-card" *ngFor="let book of filteredBooks">
           <div class="image-container">
-            <img [src]="book.image || 'default-image.jpg'" alt="Book Cover" />  <!-- Optional fallback image -->
+            <img [src]="'/assets/images/calatorie.jpg'" alt="Book Cover" />  <!-- Optional fallback image -->
           </div>
           <div class="info-container">
             <h2>{{ book.title }}</h2>
